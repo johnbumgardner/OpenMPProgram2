@@ -127,11 +127,6 @@ int main(int argc, char*argv[]){
         }
     }
 
-
-    
-    
-    
-    
     pi = (double)(4*circleCount)/(numPartitions * numPartitions);
     printf("For-j without regard for i iteration done at a time parallelization of estimate of pi is: %10.8lf\n", pi);
 
