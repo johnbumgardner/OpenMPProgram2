@@ -35,35 +35,23 @@ int main(int argc, char*argv[]){
     
     // Parallelize iterations of the for-i loop
 
-
-    #pragma omp parallel {
-        // start of parallel region
-        #pragma omp parallel for default(shared) private(i)
-        for (i = 0; i < numPartitions; i++) {
+    #pragma omp parallel for default(shared) private(i) 
+    {
+        for (i = 0; i < numPartitions; i++) 
+        {
             double a = (i + .5)*interval;
-            for (j = 0; j < numPartitions; j++) {
+            for (j = 0; j < numPartitions; j++) 
+            {
                 double b = (j + .5)*interval;
-                if ((a*a + b*b) <= 1) {
+                if ((a*a + b*b) <= 1) 
+                {
                     circleCount++;
                 }
             }
         }
     }
-    /*for (i = 0; i < numPartitions; i++) {
-
-        double a = (i + .5)*interval;
-
-        for (j = 0; j < numPartitions; j++) {
-
-            double b = (j + .5)*interval;
-
-            if ((a*a + b*b) <= 1) {
-                circleCount++;
-            }
-
-        }
-
-    }*/
+    
+    
     
     pi = (double)(4*circleCount)/(numPartitions * numPartitions);
     printf("For-i parallelization of estimate of pi is: %10.8lf\n", pi);
