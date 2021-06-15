@@ -58,9 +58,9 @@ int main(int argc, char*argv[]){
 
     // Parallelize iterations of the for-j loop, one iteration of the for i loop at a time
 
-    int circleCount = 0;
-    double interval = 0, pi = 0;
-    int i = 0, j = 0;
+    circleCount = 0;
+    interval = 0, pi = 0;
+    i = 0, j = 0;
 
     interval = 1.0/(double)numPartitions;
     
