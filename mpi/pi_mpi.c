@@ -116,7 +116,7 @@ int main(int argc, char*argv[]){
     if (myRank == 0) {
         pi = (double)(4*circleCount)/(numPartitions * numPartitions);
         printf("Estimate of pi is: %10.8lf\n", pi);
-        printf("Total elapsed time: %10.8lf\n");
+        // printf("Total elapsed time: %10.8lf\n");
     }
 
     // Clean up
