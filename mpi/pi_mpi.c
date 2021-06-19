@@ -62,7 +62,7 @@ int main(int argc, char*argv[]){
     //////////////////////////////////////////////////////
     // Start the timer
 
-    double startTime = MPI_Wtime();
+    // double startTime = MPI_Wtime();
 
     // Figure out which partitions this thread is computing
     int gridSize      = numPartitions*numPartitions;
@@ -97,8 +97,8 @@ int main(int argc, char*argv[]){
 
     // Stop the timer and calculate how much time has passed
     
-    double endTime = MPI_Wtime();
-    double elapsedTime = endTime - startTime;
+    // double endTime = MPI_Wtime();
+    // double elapsedTime = endTime - startTime;
 
     MPI_Barrier(MPI_COMM_WORLD);
  
