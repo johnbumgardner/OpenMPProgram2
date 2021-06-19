@@ -106,6 +106,8 @@ int main(int argc, char*argv[]){
 
     // Reduce to calculate the number of midpoints inside the circle
 
+    MPI_Reduce(&local_circleCount, &circleCount, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+
     //////////////////////////////////////////////////////
     // END: SECTION TO MODIFY 
     //////////////////////////////////////////////////////
