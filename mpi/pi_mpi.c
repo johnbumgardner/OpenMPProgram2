@@ -62,7 +62,7 @@ int main(int argc, char*argv[]){
     //////////////////////////////////////////////////////
     // Start the timer
 
-    // double startTime = MPI_Wtime();
+    double startTime = MPI_Wtime();
 
     // Figure out which partitions this thread is computing
     int gridSize      = numPartitions*numPartitions;
@@ -97,12 +97,14 @@ int main(int argc, char*argv[]){
 
     // Stop the timer and calculate how much time has passed
     
-    // double endTime = MPI_Wtime();
-    // double elapsedTime = endTime - startTime;
+    double endTime = MPI_Wtime();
+    double elapsedTime = endTime - startTime;
 
     MPI_Barrier(MPI_COMM_WORLD);
  
     // Reduce to find the maximum time elapsed
+    
+    MPI_Reduce(&elapsedTime, &max_time_elapsed, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
     // Reduce to calculate the number of midpoints inside the circle
 
@@ -116,7 +118,7 @@ int main(int argc, char*argv[]){
     if (myRank == 0) {
         pi = (double)(4*circleCount)/(numPartitions * numPartitions);
         printf("Estimate of pi is: %10.8lf\n", pi);
-        // printf("Total elapsed time: %10.8lf\n");
+        printf("Total elapsed time: %10.8lf\n", max_time_elapsed);
     }
 
     // Clean up
